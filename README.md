@@ -1,4 +1,6 @@
 # [WACV 2027] AdaPhase: Navigating the Trajectory with Adaptive Frequency Modulation for Content-preserving Stylization
+### [Paper]() / [arXiv]() / [Project Page]()
+
 <p align="center">
   <img src="./asset/introduction_new.png" width="100%" alt="AdaPhase Overview">
 </p>
@@ -28,7 +30,6 @@ The required model weights are <b>automatically downloaded from Hugging Face</b>
 and cached in the directory specified by ```--model-cache-dir``` (default: ```./model_cache```)
 
 Alternatively, the models can be downloaded in advance using:
-(hugging face link???)
 
 ```
 hf download stabilityai/stable-diffusion-xl-base-1.0 \
@@ -51,7 +52,7 @@ python adaphase_sdxl.py \
 ```
 Replace ```--content-image``` with the path to your input image and ```--prompt``` with your desired style description.
 
-you can adjust ```--init-gaussian-lambda``` to adjust stylization...
+you can adjust ```--init-gaussian-lambda``` to control the balance between stylization and content preservation.
 
 ### Example Style Prompts
 - <b>Traditional Arts:</b> "oil painting", "watercolor", "impressionism", "ink wash painting", "impasto painting", "sketching", "pointillism", "ukiyo-e"
