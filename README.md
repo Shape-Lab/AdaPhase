@@ -1,5 +1,5 @@
 # [WACV 2027] AdaPhase: Navigating the Trajectory with Adaptive Frequency Modulation for Content-preserving Stylization
-### [Paper]() / [arXiv]() / [Project Page]()
+<!--### [Paper]() / [arXiv]() / [Project Page]()-->
 
 <p align="center">
   <img src="./asset/introduction_new.png" width="100%" alt="AdaPhase Overview">
