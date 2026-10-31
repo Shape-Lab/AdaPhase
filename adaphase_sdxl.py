@@ -73,6 +73,7 @@ def main():
     parser.add_argument("--num-inference-steps", type=int, default=50)
     parser.add_argument("--sdxl-base-ratio", type=float, default=0.8)
     parser.add_argument("--model-cache-dir", type=str, default="./model_cache") # TODO
+    parser.add_argument("--init-gaussian-lambda", type=float, default=0.3)      # TODO
     args = parser.parse_args()
 
     seed_everything(args.seed)
@@ -125,6 +126,7 @@ def main():
     callback_base_fn = partial(
         callback_dynamic_latents,
         ddim_latents=ddim_latents,
+        init_gaussian_lambda=args.init_gaussian_lambda,
         num_inference_steps=args.num_inference_steps,
         strength=args.strength,
         step_offset=0,
@@ -132,6 +134,7 @@ def main():
     callback_refiner_fn = partial(
         callback_dynamic_latents,
         ddim_latents=ddim_latents,
+        init_gaussian_lambda=args.init_gaussian_lambda,
         num_inference_steps=args.num_inference_steps,
         strength=args.strength,
         step_offset=30, # the actual number of steps that Base will perform
@@ -176,35 +179,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-"""
-CUDA_VISIBLE_DEVICES=9 \
-python adaphase_sdxl.py \
-  --content-image <your content image direction.png> \
-  --prompt <your stylization prompt> \
-  --output-dir <your stylized image output direction> \
-  --model-cache-dir "/data/lfs/sekwang/sdxl-parameters/"
-
-Example style keyword:
-    "mosaic art"
-    "oil painting"
-    "claymation"
-    "cartoon"
-    "voxel art"
-    "sketching"
-    "pixel art"
-    "ukiyo-e"
-    "watercolor"
-    "cubism"
-    "cyberpunk"
-    "pointillism"
-    "ink wash painting"
-    "impasto painting"
-    "stained glass art"
-    "glitch art"
-    "graffiti panting"
-    "origami"
-    "impressionism"
-    "low poly"
-"""
